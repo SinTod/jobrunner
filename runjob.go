@@ -26,7 +26,7 @@ type Func func()
 
 func (r Func) Run() { r() }
 
-var standardParser = NewParser(
+var standardParser = cron.NewParser(
 	cron.SecondOptional | cron.Minute | cron.Hour | cron.Dom | cron.Month | cron.Dow | cron.Descriptor
 )
 
