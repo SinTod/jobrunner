@@ -26,8 +26,12 @@ type Func func()
 
 func (r Func) Run() { r() }
 
+var standardParser = NewParser(
+	cron.SecondOptional | cron.Minute | cron.Hour | cron.Dom | cron.Month | cron.Dow | cron.Descriptor
+)
+
 func Schedule(spec string, job cron.Job) (cron.EntryID, error) {
-	sched, err := cron.ParseStandard(spec)
+	sched, err := standardParser(spec)
 	if err != nil {
 		return -1, err
 	}
