@@ -24,7 +24,7 @@ type Job struct {
 const UNNAMED = "(unnamed)"
 
 func New(job cron.Job) *Job {
-	name := reflect.TypeOf(job).Name()
+	name := reflect.ValueOf(job).FieldByName("Name").String()
 	if name == "Func" {
 		name = UNNAMED
 	}
