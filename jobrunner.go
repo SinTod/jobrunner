@@ -78,3 +78,7 @@ func (j *Job) Run() {
 	j.Latency = end.Sub(start).String()
 
 }
+
+func (j *Job) RealJob() cron.Job {
+	return j.inner
+}
